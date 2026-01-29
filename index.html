@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Britaness & Moonware | Cheat Clients</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #050505;
+  --accent: #ff0000; /* Яркий красный для читов */
+  --accent-muted: #7a0c0c;
+  --text: #ffffff;
+  --muted: #a0a0a0;
+  --card-bg: linear-gradient(180deg, #0f0f0f, #070707);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+.wrapper {
+  max-width: 600px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.hero h1 {
+  font-size: 52px;
+  font-weight: 200;
+  letter-spacing: -1px;
+}
+
+.hero span {
+  color: var(--accent);
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+}
+
+/* CLIENT SECTIONS */
+.client-section {
+  margin-bottom: 120px;
+}
+
+.client-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 25px;
+  border-bottom: 1px solid var(--accent-muted);
+  padding-bottom: 10px;
+}
+
+.client-name {
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.version-badge {
+  font-size: 12px;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+/* IMAGES / SCREENSHOTS */
+.screenshot-container {
+  width: 100%;
+  height: 200px;
+  background: #111;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  border: 1px solid #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.screenshot-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+  transition: 0.5s;
+}
+
+.screenshot-container:hover img {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* FEATURES (ПЛЮСЫ) */
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.feature-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 14px;
+}
+
+.feature-card h4 {
+  color: var(--accent);
+  font-size: 14px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.feature-card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* DOWNLOAD BUTTON */
+.btn-download {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--text);
+  text-align: center;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 400;
+  transition: 0.3s;
+}
+
+.btn-download:hover {
+  background: var(--accent);
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.3);
+}
+
+/* ANIMATION */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+footer {
+  text-align: center;
+  color: #333;
+  font-size: 12px;
+  margin-top: 50px;
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  
+  <header class="hero reveal">
+    <h1>Software<span>Solutions</span></h1>
+    <p style="color: var(--muted); margin-top: 15px; font-weight: 200;">Приватные решения для доминирования.</p>
+  </header>
+
+  <section class="client-section reveal">
+    <div class="client-header">
+      <h2 class="client-name">Britaness</h2>
+      <div class="version-badge">BUILD v2.4.1</div>
+    </div>
+
+    <div class="screenshot-container">
+      <img src="https://i.ibb.co/hJm7SCQ0/photo-5465281760758271854-w.jpg" alt="Britaness Screenshot">
+    </div>
+
+    <div class="features">
+      <div class="feature-card">
+        <h4>Killaura</h4>
+        <p>Адаптивные обходы под популярные античиты.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Visuals</h4>
+        <p>Чистый ESP и высококачественные эффекты.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Optimization</h4>
+        <p>Стабильный FPS даже на слабых устройствах.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Bypass</h4>
+        <p>Регулярные обновления сигнатур обхода.</p>
+      </div>
+    </div>
+
+    <a href="#" class="btn-download">Скачать Britaness</a>
+  </section>
+
+  <section class="client-section reveal">
+    <div class="client-header">
+      <h2 class="client-name">Moonware</h2>
+      <div class="version-badge">BUILD v1.0.8-beta</div>
+    </div>
+
+    <div class="screenshot-container">
+      <img src="https://i.ibb.co/wh3scsrd/photo-5460771065844928565-y.jpg" alt="Moonware Screenshot">
+    </div>
+
+    <div class="features">
+      <div class="feature-card">
+        <h4>Movement</h4>
+        <p>Идеальный Fly и Speed для любых режимов.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Exploits</h4>
+        <p>Уникальные функции, которых нет у конкурентов.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Configs</h4>
+        <p>Облачная система сохранения настроек.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Design</h4>
+        <p>Минималистичный Moon-интерфейс.</p>
+      </div>
+    </div>
+
+    <a href="#" class="btn-download">Скачать Moonware</a>
+  </section>
+
+  <footer>
+    &copy; 2026 BRITANESS & MOONWARE. FOR EDUCATIONAL PURPOSES ONLY.
+  </footer>
+
+</div>
+
+<script>
+  const observerOptions = {
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
