@@ -10,10 +10,10 @@
 <style>
 :root {
   --bg: #050505;
-  --primary: #ff002f; /* Агрессивный красный */
+  --primary: #ff002f; /* Тот самый агрессивный красный */
   --primary-dim: rgba(255, 0, 47, 0.1);
+  --blue: #008cff;
   --text: #ffffff;
-  --glass: rgba(20, 20, 20, 0.6);
   --border: rgba(255, 255, 255, 0.1);
 }
 
@@ -21,7 +21,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  cursor: none; /* Убираем стандартный курсор */
+  cursor: none; /* Убираем курсор */
 }
 
 body {
@@ -41,64 +41,40 @@ body {
 
 /* CUSTOM CURSOR */
 .cursor-dot, .cursor-outline {
-  position: fixed;
-  top: 0; left: 0;
+  position: fixed; top: 0; left: 0;
   transform: translate(-50%, -50%);
-  border-radius: 50%;
-  z-index: 9999;
-  pointer-events: none;
+  border-radius: 50%; z-index: 9999; pointer-events: none;
 }
-.cursor-dot {
-  width: 8px; height: 8px;
-  background: var(--primary);
-}
+.cursor-dot { width: 8px; height: 8px; background: var(--primary); }
 .cursor-outline {
-  width: 40px; height: 40px;
-  border: 1px solid var(--primary);
+  width: 40px; height: 40px; border: 1px solid var(--primary);
   transition: width 0.2s, height 0.2s, background-color 0.2s;
 }
 
 /* BACKGROUND CANVAS */
 #bg-canvas {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: -1;
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%; z-index: -1;
 }
 
 /* PRELOADER */
 #preloader {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: #000;
-  z-index: 10000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: #000; z-index: 10000;
+  display: flex; justify-content: center; align-items: center; flex-direction: column;
   transition: opacity 0.5s ease;
 }
 .loader-text {
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--primary);
-  font-size: 24px;
-  animation: pulse 1s infinite;
+  font-family: 'JetBrains Mono', monospace; color: var(--primary);
+  font-size: 24px; animation: pulse 1s infinite;
 }
 .loader-bar {
-  width: 200px; height: 2px;
-  background: #222;
-  margin-top: 20px;
-  position: relative;
-  overflow: hidden;
+  width: 200px; height: 2px; background: #222; margin-top: 20px;
+  position: relative; overflow: hidden;
 }
 .loader-bar::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  height: 100%; width: 0%;
-  background: var(--primary);
-  animation: load 2s ease forwards;
+  content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 0%;
+  background: var(--primary); animation: load 2s ease forwards;
 }
 
 @keyframes load { to { width: 100%; } }
@@ -106,263 +82,130 @@ body {
 
 /* WRAPPER */
 .wrapper {
-  max-width: 1100px;
-  margin: auto;
-  padding: 0 20px;
-  position: relative;
-  z-index: 10;
+  max-width: 1100px; margin: auto; padding: 0 20px; position: relative; z-index: 10;
 }
 
-/* GLITCH TEXT EFFECT */
+/* GLITCH TEXT EFFECT (ОРИГИНАЛЬНЫЙ) */
 .glitch {
-  position: relative;
-  font-size: 80px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: -2px;
-  line-height: 1;
+  position: relative; font-size: 80px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: -2px; line-height: 1;
 }
 .glitch::before, .glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%;
 }
 .glitch::before {
-  left: 2px;
-  text-shadow: -1px 0 #00ffff;
-  clip: rect(44px, 450px, 56px, 0);
+  left: 2px; text-shadow: -1px 0 #00ffff; clip: rect(44px, 450px, 56px, 0);
   animation: glitch-anim-1 5s infinite linear alternate-reverse;
 }
 .glitch::after {
-  left: -2px;
-  text-shadow: -1px 0 #ff00ff;
-  clip: rect(44px, 450px, 56px, 0);
+  left: -2px; text-shadow: -1px 0 #ff00ff; clip: rect(44px, 450px, 56px, 0);
   animation: glitch-anim-2 5s infinite linear alternate-reverse;
 }
 
 @keyframes glitch-anim-1 {
-  0% { clip: rect(20px, 9999px, 10px, 0); }
-  20% { clip: rect(60px, 9999px, 80px, 0); }
-  40% { clip: rect(10px, 9999px, 50px, 0); }
-  60% { clip: rect(90px, 9999px, 10px, 0); }
-  80% { clip: rect(30px, 9999px, 70px, 0); }
-  100% { clip: rect(50px, 9999px, 20px, 0); }
+  0% { clip: rect(20px, 9999px, 10px, 0); } 20% { clip: rect(60px, 9999px, 80px, 0); }
+  40% { clip: rect(10px, 9999px, 50px, 0); } 60% { clip: rect(90px, 9999px, 10px, 0); }
+  80% { clip: rect(30px, 9999px, 70px, 0); } 100% { clip: rect(50px, 9999px, 20px, 0); }
 }
 @keyframes glitch-anim-2 {
-  0% { clip: rect(80px, 9999px, 30px, 0); }
-  20% { clip: rect(10px, 9999px, 60px, 0); }
-  40% { clip: rect(40px, 9999px, 20px, 0); }
-  60% { clip: rect(5px, 9999px, 80px, 0); }
-  80% { clip: rect(60px, 9999px, 30px, 0); }
-  100% { clip: rect(20px, 9999px, 90px, 0); }
+  0% { clip: rect(80px, 9999px, 30px, 0); } 20% { clip: rect(10px, 9999px, 60px, 0); }
+  40% { clip: rect(40px, 9999px, 20px, 0); } 60% { clip: rect(5px, 9999px, 80px, 0); }
+  80% { clip: rect(60px, 9999px, 30px, 0); } 100% { clip: rect(20px, 9999px, 90px, 0); }
 }
 
 /* HERO */
 .hero {
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  height: 80vh; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
 }
 .hero p {
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--primary);
-  margin-top: 20px;
-  font-size: 14px;
-  background: rgba(255,0,47,0.08);
-  padding: 10px 20px;
-  border: 1px solid var(--primary);
-  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace; color: var(--primary);
+  margin-top: 20px; font-size: 14px; background: rgba(255,0,47,0.08);
+  padding: 10px 20px; border: 1px solid var(--primary); border-radius: 4px;
 }
 
 /* SOCIALS */
-.socials-bar {
-  display: flex;
-  gap: 20px;
-  margin-top: 40px;
-}
+.socials-bar { display: flex; gap: 20px; margin-top: 40px; }
 .social-btn {
-  padding: 12px 30px;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.2);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 12px;
-  transition: 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-.social-btn::before {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-  transition: 0.5s;
+  padding: 12px 30px; background: transparent; border: 1px solid rgba(255,255,255,0.2);
+  color: #fff; text-decoration: none; font-weight: 600; text-transform: uppercase;
+  font-size: 12px; transition: 0.3s; position: relative; overflow: hidden;
 }
 .social-btn:hover {
-  border-color: var(--primary);
-  box-shadow: 0 0 15px var(--primary-dim);
-  text-shadow: 0 0 5px var(--primary);
-}
-.social-btn:hover::before {
-  left: 100%;
+  border-color: var(--primary); box-shadow: 0 0 15px var(--primary-dim); text-shadow: 0 0 5px var(--primary);
 }
 
 /* STATS */
 .stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-bottom: 100px;
-  text-align: center;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  margin-bottom: 100px; text-align: center;
 }
-.stat-box h3 {
-  font-size: 36px;
-  font-weight: 800;
-  color: #fff;
-}
-.stat-box p {
-  color: #666;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
+.stat-box h3 { font-size: 36px; font-weight: 800; color: #fff; }
+.stat-box p { color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; }
 
 /* PRODUCTS (3D CARDS) */
-.product-section {
-  display: flex;
-  flex-direction: column;
-  gap: 100px;
-  margin-bottom: 150px;
-}
-.card-3d-wrap {
-  perspective: 1000px;
-}
+.product-section { display: flex; flex-direction: column; gap: 100px; margin-bottom: 150px; }
+.card-3d-wrap { perspective: 1000px; }
 .card-3d {
   background: linear-gradient(145deg, rgba(20,20,20,0.9), rgba(10,10,10,0.95));
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 40px;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.1s ease-out;
+  border: 1px solid var(--border); border-radius: 20px; padding: 40px;
+  position: relative; transform-style: preserve-3d; transition: transform 0.1s ease-out;
   box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 .card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  padding-bottom: 20px;
-  margin-bottom: 30px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 20px; margin-bottom: 30px;
 }
-.card-title {
-  font-size: 40px;
-  font-weight: 800;
-  text-transform: uppercase;
-}
+.card-title { font-size: 40px; font-weight: 800; text-transform: uppercase; }
 .card-title span { color: var(--primary); }
 .status {
-  font-family: 'JetBrains Mono';
-  font-size: 10px;
-  color: #0f0;
-  background: rgba(0,255,0,0.1);
-  padding: 5px 10px;
-  border-radius: 4px;
+  font-family: 'JetBrains Mono'; font-size: 10px; color: #0f0;
+  background: rgba(0,255,0,0.1); padding: 5px 10px; border-radius: 4px;
 }
 
-/* CONTENT GRID */
-.content-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 40px;
-  align-items: center;
+/* CONTENT GRID (NEW FOR 2 IMAGES) */
+.gallery-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;
 }
+
 .screenshot {
-  width: 100%;
-  height: 350px;
-  background: #111;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid #333;
-  position: relative;
+  width: 100%; height: 220px; /* Высота под два скрина */
+  background: #111; border-radius: 12px; overflow: hidden;
+  border: 1px solid #333; position: relative;
 }
 .screenshot img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: 0.5s;
-  opacity: 0.8;
+  width: 100%; height: 100%; object-fit: cover; transition: 0.5s; opacity: 0.8;
 }
-.screenshot:hover img { opacity: 1; transform: scale(1.03); }
+.screenshot:hover img { opacity: 1; transform: scale(1.05); }
 
-.features-list {
-  list-style: none;
-}
+.features-list { list-style: none; }
 .features-list li {
-  margin-bottom: 20px;
-  padding-left: 20px;
-  border-left: 2px solid var(--border);
-  transition: 0.3s;
+  margin-bottom: 20px; padding-left: 20px; border-left: 2px solid var(--border); transition: 0.3s;
 }
-.features-list li:hover {
-  border-left-color: var(--primary);
-  padding-left: 30px;
-}
-.features-list h4 {
-  font-size: 18px;
-  margin-bottom: 5px;
-  color: #fff;
-}
-.features-list p {
-  font-size: 13px;
-  color: #888;
-  line-height: 1.5;
-}
+.features-list li:hover { border-left-color: var(--primary); padding-left: 30px; }
+.features-list h4 { font-size: 18px; margin-bottom: 5px; color: #fff; }
+.features-list p { font-size: 13px; color: #888; line-height: 1.5; }
 
 /* BUTTONS */
 .buy-btn {
-  display: block;
-  width: 100%;
-  margin-top: 30px;
-  padding: 20px;
-  background: var(--primary);
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  display: block; width: 100%; margin-top: 30px; padding: 20px;
+  background: var(--primary); color: #fff; text-align: center;
+  text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
   clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-  transition: 0.3s;
-  position: relative;
-  overflow: hidden;
+  transition: 0.3s; position: relative; overflow: hidden; border: none; font-family: 'Montserrat';
 }
-.buy-btn:hover {
-  background: #fff;
-  color: #000;
-  box-shadow: 0 0 30px var(--primary);
-}
+.buy-btn:hover { background: #fff; color: #000; box-shadow: 0 0 30px var(--primary); }
 
 /* FOOTER */
 footer {
-  text-align: center;
-  padding: 50px;
-  border-top: 1px solid #111;
-  font-family: 'JetBrains Mono';
-  font-size: 12px;
-  color: #444;
+  text-align: center; padding: 50px; border-top: 1px solid #111;
+  font-family: 'JetBrains Mono'; font-size: 12px; color: #444;
 }
 
 /* MEDIA QUERY */
 @media (max-width: 768px) {
   .glitch { font-size: 40px; }
-  .content-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; } /* На телефоне скрины друг под другом */
   .stats { grid-template-columns: 1fr; }
 }
 </style>
@@ -415,11 +258,16 @@ footer {
           <div class="status">● WORKING</div>
         </div>
         
-        <div class="content-grid">
+        <div class="gallery-grid">
           <div class="screenshot">
-            <img src="https://i.ibb.co/hJm7SCQ0/photo-5465281760758271854-w.jpg" alt="Britaness">
+            <img src="https://i.ibb.co/hJm7SCQ0/photo-5465281760758271854-w.jpg" alt="Britaness 1">
           </div>
-          <ul class="features-list">
+          <div class="screenshot">
+            <img src="https://i.ibb.co/wh3scsrd/photo-5460771065844928565-y.jpg" style="filter: hue-rotate(90deg);" alt="Britaness 2">
+          </div>
+        </div>
+          
+        <ul class="features-list">
             <li>
               <h4>ЕБЕЙШИЕ ОБХОДЫ</h4>
               <p>Matrix-bypass. Обходит любые проверки, даже ручные.</p>
@@ -432,9 +280,9 @@ footer {
               <h4>RAGE & LEGIT</h4>
               <p>От беспалевной игры до полного уничтожения лобби.</p>
             </li>
-          </ul>
-        </div>
-        <a href="#" class="buy-btn">ACCESS BRITANESS</a>
+        </ul>
+        
+        <button class="buy-btn" onclick="downloadBritaness(this)">ACCESS BRITANESS</button>
       </div>
     </div>
 
@@ -445,11 +293,16 @@ footer {
           <div class="status" style="color: #008cff; background: rgba(0,140,255,0.1)">● TESTING</div>
         </div>
         
-        <div class="content-grid">
-          <div class="screenshot" style="border-color: #004477">
-             <img src="https://i.ibb.co/wh3scsrd/photo-5460771065844928565-y.jpg" alt="Moonware">
-          </div>
-          <ul class="features-list">
+        <div class="gallery-grid">
+           <div class="screenshot" style="border-color: #004477">
+             <img src="https://i.ibb.co/wh3scsrd/photo-5460771065844928565-y.jpg" alt="Moonware 1">
+           </div>
+           <div class="screenshot" style="border-color: #004477">
+             <img src="https://i.ibb.co/hJm7SCQ0/photo-5465281760758271854-w.jpg" style="filter: grayscale(1);" alt="Moonware 2">
+           </div>
+        </div>
+
+        <ul class="features-list">
             <li style="border-left-color: #008cff">
               <h4 style="color: #008cff">MOVEMENT GOD</h4>
               <p>Идеальные стрейфы, сброс спринта, элитра мотиун всё обходит.</p>
@@ -462,9 +315,9 @@ footer {
               <h4 style="color: #008cff">OPTIMIZATION</h4>
               <p>Жрет очень мало, но функционал большой.</p>
             </li>
-          </ul>
-        </div>
-        <a href="#" class="buy-btn" style="background: #008cff; box-shadow: none;" onmouseover="this.style.boxShadow='0 0 30px #008cff'" onmouseout="this.style.boxShadow='none'">ACCESS MOONWARE</a>
+        </ul>
+        
+        <a href="https://discord.gg/c2rx9B9Qcc" class="buy-btn" style="background: #008cff; box-shadow: none;" onmouseover="this.style.boxShadow='0 0 30px #008cff'" onmouseout="this.style.boxShadow='none'">ACCESS MOONWARE</a>
       </div>
     </div>
 
@@ -477,7 +330,28 @@ footer {
 </div>
 
 <script>
-  // PRELOADER
+  function downloadBritaness(btn) {
+      const originalText = btn.innerText;
+      btn.innerText = "BYPASSING SECURITY...";
+      btn.style.background = "#222";
+      
+      setTimeout(() => {
+          btn.innerText = "DOWNLOADING...";
+          setTimeout(() => {
+              window.location.href = "https://f72.workupload.com/download/gf8jty828bJ";
+              
+              btn.innerText = "LAUNCHED";
+              btn.style.background = "#0f0";
+              btn.style.color = "#000";
+              setTimeout(() => {
+                  btn.innerText = originalText;
+                  btn.style.background = ""; 
+                  btn.style.color = "";
+              }, 2000);
+          }, 1000);
+      }, 1000);
+  }
+
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('preloader').style.opacity = '0';
@@ -487,7 +361,6 @@ footer {
     }, 1500);
   });
 
-  // CURSOR
   const cursorDot = document.querySelector('[data-cursor-dot]');
   const cursorOutline = document.querySelector('[data-cursor-outline]');
 
@@ -504,7 +377,6 @@ footer {
     }, { duration: 500, fill: "forwards" });
   });
 
-  // PARTICLES BACKGROUND
   const canvas = document.getElementById('bg-canvas');
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
@@ -574,7 +446,6 @@ footer {
     initParticles();
   });
 
-  // 3D TILT EFFECT FOR CARDS
   const cards = document.querySelectorAll('.card-3d');
 
   cards.forEach(card => {
@@ -586,7 +457,7 @@ footer {
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
       
-      const rotateX = ((y - centerY) / centerY) * -5; // Max rotation deg
+      const rotateX = ((y - centerY) / centerY) * -5;
       const rotateY = ((x - centerX) / centerX) * 5;
 
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
