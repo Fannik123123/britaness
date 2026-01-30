@@ -1,696 +1,603 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>NEW ERA OF SOFTWARE | DOMINATE</title>
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Montserrat:wght@300;500;800&display=swap" rel="stylesheet">
-        <style>
-            :root {
-                --bg: #050505;
-                --p: #ff002f;
-                --pd: rgba(255,0,47,0.1);
-                --t: #ffffff;
-                --g: rgba(20,20,20,0.6);
-                --b: rgba(255,255,255,0.1)
-            }
-
-            * {
-                box-sizing: border-box;
-                margin: 0;
-                padding: 0;
-                cursor: none;
-                user-select: auto;
-                -webkit-user-select: auto
-            }
-
-            body {
-                background-color: var(--bg);
-                color: var(--t);
-                font-family: 'Montserrat',sans-serif;
-                overflow-x: hidden
-            }
-
-            ::-webkit-scrollbar {
-                width: 6px
-            }
-
-            ::-webkit-scrollbar-track {
-                background: #000
-            }
-
-            ::-webkit-scrollbar-thumb {
-                background: var(--p);
-                border-radius: 3px
-            }
-
-            ::selection {
-                background: var(--p);
-                color: #000
-            }
-
-            .cd,.co {
-                position: fixed;
-                top: 0;
-                left: 0;
-                transform: translate(-50%,-50%);
-                border-radius: 50%;
-                z-index: 9999;
-                pointer-events: none
-            }
-
-            .cd {
-                width: 8px;
-                height: 8px;
-                background: var(--p)
-            }
-
-            .co {
-                width: 40px;
-                height: 40px;
-                border: 1px solid var(--p);
-                transition: width .2s,height .2s,background-color .2s
-            }
-
-            #bc {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: -1
-            }
-
-            #pl {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: #000;
-                z-index: 10000;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                transition: opacity .5s ease
-            }
-
-            .lt {
-                font-family: 'JetBrains Mono',monospace;
-                color: var(--p);
-                font-size: 24px;
-                animation: p 1s infinite
-            }
-
-            .lb {
-                width: 200px;
-                height: 2px;
-                background: #222;
-                margin-top: 20px;
-                position: relative;
-                overflow: hidden
-            }
-
-            .lb::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 0%;
-                background: var(--p);
-                animation: l 2s ease forwards
-            }
-
-            @keyframes l {
-                to {
-                    width: 100%
-                }
-            }
-
-            @keyframes p {
-                0%,100% {
-                    opacity: 1
-                }
-
-                50% {
-                    opacity: .5
-                }
-            }
-
-            .w {
-                max-width: 1100px;
-                margin: auto;
-                padding: 0 20px;
-                position: relative;
-                z-index: 10
-            }
-
-            .gl {
-                position: relative;
-                font-size: 80px;
-                font-weight: 800;
-                text-transform: uppercase;
-                letter-spacing: -2px;
-                line-height: 1
-            }
-
-            .gl::before,.gl::after {
-                content: attr(data-text);
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%
-            }
-
-            .gl::before {
-                left: 2px;
-                text-shadow: -1px 0 #0ff;
-                clip: rect(44px,450px,56px,0);
-                animation: g1 5s infinite linear alternate-reverse
-            }
-
-            .gl::after {
-                left: -2px;
-                text-shadow: -1px 0 #f0f;
-                clip: rect(44px,450px,56px,0);
-                animation: g2 5s infinite linear alternate-reverse
-            }
-
-            @keyframes g1 {
-                0% {
-                    clip: rect(20px,9999px,10px,0)
-                }
-
-                20% {
-                    clip: rect(60px,9999px,80px,0)
-                }
-
-                40% {
-                    clip: rect(10px,9999px,50px,0)
-                }
-
-                60% {
-                    clip: rect(90px,9999px,10px,0)
-                }
-
-                80% {
-                    clip: rect(30px,9999px,70px,0)
-                }
-
-                100% {
-                    clip: rect(50px,9999px,20px,0)
-                }
-            }
-
-            @keyframes g2 {
-                0% {
-                    clip: rect(80px,9999px,30px,0)
-                }
-
-                20% {
-                    clip: rect(10px,9999px,60px,0)
-                }
-
-                40% {
-                    clip: rect(40px,9999px,20px,0)
-                }
-
-                60% {
-                    clip: rect(5px,9999px,80px,0)
-                }
-
-                80% {
-                    clip: rect(60px,9999px,30px,0)
-                }
-
-                100% {
-                    clip: rect(20px,9999px,90px,0)
-                }
-            }
-
-            .h {
-                height: 80vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center
-            }
-
-            .h p {
-                font-family: 'JetBrains Mono',monospace;
-                color: var(--p);
-                margin-top: 20px;
-                font-size: 14px;
-                background: rgba(255,0,47,.08);
-                padding: 10px 20px;
-                border: 1px solid var(--p);
-                border-radius: 4px
-            }
-
-            .sb {
-                display: flex;
-                gap: 20px;
-                margin-top: 40px
-            }
-
-            .sbtn {
-                padding: 12px 30px;
-                background: 0 0;
-                border: 1px solid rgba(255,255,255,.2);
-                color: #fff;
-                text-decoration: none;
-                font-weight: 600;
-                text-transform: uppercase;
-                font-size: 12px;
-                transition: .3s;
-                position: relative;
-                overflow: hidden
-            }
-
-            .sbtn::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);
-                transition: .5s
-            }
-
-            .sbtn:hover {
-                border-color: var(--p);
-                box-shadow: 0 0 15px var(--pd);
-                text-shadow: 0 0 5px var(--p)
-            }
-
-            .sbtn:hover::before {
-                left: 100%
-            }
-
-            .st {
-                display: grid;
-                grid-template-columns: repeat(3,1fr);
-                gap: 20px;
-                margin-bottom: 100px;
-                text-align: center
-            }
-
-            .stb h3 {
-                font-size: 36px;
-                font-weight: 800;
-                color: #fff
-            }
-
-            .stb p {
-                color: #666;
-                font-size: 12px;
-                text-transform: uppercase;
-                letter-spacing: 2px
-            }
-
-            .ps {
-                display: flex;
-                flex-direction: column;
-                gap: 100px;
-                margin-bottom: 150px
-            }
-
-            .c3w {
-                perspective: 1000px
-            }
-
-            .c3 {
-                background: linear-gradient(145deg,rgba(20,20,20,.9),rgba(10,10,10,.95));
-                border: 1px solid var(--b);
-                border-radius: 20px;
-                padding: 40px;
-                position: relative;
-                transform-style: preserve-3d;
-                transition: transform .1s ease-out;
-                box-shadow: 0 20px 50px rgba(0,0,0,.5)
-            }
-
-            .ch {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-bottom: 1px solid rgba(255,255,255,.05);
-                padding-bottom: 20px;
-                margin-bottom: 30px
-            }
-
-            .ct {
-                font-size: 40px;
-                font-weight: 800;
-                text-transform: uppercase
-            }
-
-            .ct span {
-                color: var(--p)
-            }
-
-            .sta {
-                font-family: 'JetBrains Mono';
-                font-size: 10px;
-                color: #0f0;
-                background: rgba(0,255,0,.1);
-                padding: 5px 10px;
-                border-radius: 4px
-            }
-
-            .cg {
-                display: grid;
-                grid-template-columns: 1.2fr .8fr;
-                gap: 40px;
-                align-items: center
-            }
-
-            .ss {
-                width: 100%;
-                height: 350px;
-                background: #111;
-                border-radius: 12px;
-                overflow: hidden;
-                border: 1px solid #333;
-                position: relative
-            }
-
-            .ss img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: .5s;
-                opacity: .8
-            }
-
-            .ss:hover img {
-                opacity: 1;
-                transform: scale(1.03)
-            }
-
-            .fl {
-                list-style: none
-            }
-
-            .fl li {
-                margin-bottom: 20px;
-                padding-left: 20px;
-                border-left: 2px solid var(--b);
-                transition: .3s
-            }
-
-            .fl li:hover {
-                border-left-color: var(--p);
-                padding-left: 30px
-            }
-
-            .fl h4 {
-                font-size: 18px;
-                margin-bottom: 5px;
-                color: #fff
-            }
-
-            .fl p {
-                font-size: 13px;
-                color: #888;
-                line-height: 1.5
-            }
-
-            .bb {
-                display: block;
-                width: 100%;
-                margin-top: 30px;
-                padding: 20px;
-                background: var(--p);
-                color: #fff;
-                text-align: center;
-                text-decoration: none;
-                font-weight: 800;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                clip-path: polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
-                transition: .3s;
-                position: relative;
-                overflow: hidden
-            }
-
-            .bb:hover {
-                background: #fff;
-                color: #000;
-                box-shadow: 0 0 30px var(--p)
-            }
-
-            footer {
-                text-align: center;
-                padding: 50px;
-                border-top: 1px solid #111;
-                font-family: 'JetBrains Mono';
-                font-size: 12px;
-                color: #444
-            }
-
-            @media(max-width: 768px) {
-                .gl {
-                    font-size:40px
-                }
-
-                .cg,.st {
-                    grid-template-columns: 1fr
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div id="pl">
-            <div class="lt">INITIALIZING SYSTEM...</div>
-            <div class="lb"></div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEW ERA OF SOFTWARE | DOMINATE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Montserrat:wght@300;500;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #050505;
+  --primary: #ff002f; /* Агрессивный красный */
+  --primary-dim: rgba(255, 0, 47, 0.1);
+  --text: #ffffff;
+  --glass: rgba(20, 20, 20, 0.6);
+  --border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  cursor: none; /* Убираем стандартный курсор */
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+/* SELECTION */
+::selection { background: var(--primary); color: #000; }
+
+/* CUSTOM CURSOR */
+.cursor-dot, .cursor-outline {
+  position: fixed;
+  top: 0; left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+}
+.cursor-dot {
+  width: 8px; height: 8px;
+  background: var(--primary);
+}
+.cursor-outline {
+  width: 40px; height: 40px;
+  border: 1px solid var(--primary);
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+/* BACKGROUND CANVAS */
+#bg-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+}
+
+/* PRELOADER */
+#preloader {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #000;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: opacity 0.5s ease;
+}
+.loader-text {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--primary);
+  font-size: 24px;
+  animation: pulse 1s infinite;
+}
+.loader-bar {
+  width: 200px; height: 2px;
+  background: #222;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.loader-bar::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%; width: 0%;
+  background: var(--primary);
+  animation: load 2s ease forwards;
+}
+
+@keyframes load { to { width: 100%; } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+/* WRAPPER */
+.wrapper {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 10;
+}
+
+/* GLITCH TEXT EFFECT */
+.glitch {
+  position: relative;
+  font-size: 80px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+.glitch::before {
+  left: 2px;
+  text-shadow: -1px 0 #00ffff;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim-1 5s infinite linear alternate-reverse;
+}
+.glitch::after {
+  left: -2px;
+  text-shadow: -1px 0 #ff00ff;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim-2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% { clip: rect(20px, 9999px, 10px, 0); }
+  20% { clip: rect(60px, 9999px, 80px, 0); }
+  40% { clip: rect(10px, 9999px, 50px, 0); }
+  60% { clip: rect(90px, 9999px, 10px, 0); }
+  80% { clip: rect(30px, 9999px, 70px, 0); }
+  100% { clip: rect(50px, 9999px, 20px, 0); }
+}
+@keyframes glitch-anim-2 {
+  0% { clip: rect(80px, 9999px, 30px, 0); }
+  20% { clip: rect(10px, 9999px, 60px, 0); }
+  40% { clip: rect(40px, 9999px, 20px, 0); }
+  60% { clip: rect(5px, 9999px, 80px, 0); }
+  80% { clip: rect(60px, 9999px, 30px, 0); }
+  100% { clip: rect(20px, 9999px, 90px, 0); }
+}
+
+/* HERO */
+.hero {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.hero p {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--primary);
+  margin-top: 20px;
+  font-size: 14px;
+  background: rgba(255,0,47,0.08);
+  padding: 10px 20px;
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+}
+
+/* SOCIALS */
+.socials-bar {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+}
+.social-btn {
+  padding: 12px 30px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.social-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: 0.5s;
+}
+.social-btn:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 15px var(--primary-dim);
+  text-shadow: 0 0 5px var(--primary);
+}
+.social-btn:hover::before {
+  left: 100%;
+}
+
+/* STATS */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 100px;
+  text-align: center;
+}
+.stat-box h3 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #fff;
+}
+.stat-box p {
+  color: #666;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* PRODUCTS (3D CARDS) */
+.product-section {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  margin-bottom: 150px;
+}
+.card-3d-wrap {
+  perspective: 1000px;
+}
+.card-3d {
+  background: linear-gradient(145deg, rgba(20,20,20,0.9), rgba(10,10,10,0.95));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+.card-title {
+  font-size: 40px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.card-title span { color: var(--primary); }
+.status {
+  font-family: 'JetBrains Mono';
+  font-size: 10px;
+  color: #0f0;
+  background: rgba(0,255,0,0.1);
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+/* CONTENT GRID */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+}
+.screenshot {
+  width: 100%;
+  height: 350px;
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #333;
+  position: relative;
+}
+.screenshot img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+  opacity: 0.8;
+}
+.screenshot:hover img { opacity: 1; transform: scale(1.03); }
+
+.features-list {
+  list-style: none;
+}
+.features-list li {
+  margin-bottom: 20px;
+  padding-left: 20px;
+  border-left: 2px solid var(--border);
+  transition: 0.3s;
+}
+.features-list li:hover {
+  border-left-color: var(--primary);
+  padding-left: 30px;
+}
+.features-list h4 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #fff;
+}
+.features-list p {
+  font-size: 13px;
+  color: #888;
+  line-height: 1.5;
+}
+
+/* BUTTONS */
+.buy-btn {
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+  padding: 20px;
+  background: var(--primary);
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.buy-btn:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 30px var(--primary);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 50px;
+  border-top: 1px solid #111;
+  font-family: 'JetBrains Mono';
+  font-size: 12px;
+  color: #444;
+}
+
+/* MEDIA QUERY */
+@media (max-width: 768px) {
+  .glitch { font-size: 40px; }
+  .content-grid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div id="preloader">
+  <div class="loader-text">INITIALIZING SYSTEM...</div>
+  <div class="loader-bar"></div>
+</div>
+
+<div class="cursor-dot" data-cursor-dot></div>
+<div class="cursor-outline" data-cursor-outline></div>
+
+<canvas id="bg-canvas"></canvas>
+
+<div class="wrapper">
+
+  <section class="hero">
+    <h1 class="glitch" data-text="NEW ERA IN CHEAT COMMUNITY">NEW ERA IN CHEAT COMMUNITY</h1>
+    <p>&lt; SYSTEM_STATUS: UNDETECTED /&gt;</p>
+    
+    <div class="socials-bar">
+      <a href="https://t.me/moonwarewithbritaness" target="_blank" class="social-btn">Telegram Channel</a>
+      <a href="https://discord.gg/c2rx9B9Qcc" target="_blank" class="social-btn">Discord Server</a>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat-box">
+      <h3>NO USERS :(</h3>
+      <p>Active Users</p>
+    </div>
+    <div class="stat-box">
+      <h3 style="color: var(--primary)">0</h3>
+      <p>Detected Bans</p>
+    </div>
+    <div class="stat-box">
+      <h3>99.9%</h3>
+      <p>Uptime</p>
+    </div>
+  </div>
+
+  <div class="product-section">
+    
+    <div class="card-3d-wrap">
+      <div class="card-3d" id="card1">
+        <div class="card-header">
+          <div class="card-title">Britaness <span>LAST BUILD</span></div>
+          <div class="status">● WORKING</div>
         </div>
-        <div class="cd" dcd></div>
-        <div class="co" dco></div>
-        <canvas id="bc"></canvas>
-        <div class="w">
-            <section class="h">
-                <h1 class="gl" data-text="NEW ERA IN CHEAT COMMUNITY">NEW ERA IN CHEAT COMMUNITY</h1>
-                <p>&lt; SYSTEM_STATUS: UNDETECTED /&gt;</p>
-                <div class="sb">
-                    <a href="https://t.me/moonwarewithbritaness" target="_blank" class="sbtn">Telegram Channel</a>
-                    <a href="https://discord.gg/c2rxNR9Qcc" target="_blank" class="sbtn">Discord Server</a>
-                </div>
-            </section>
-            <div class="st">
-                <div class="stb">
-                    <h3>NO USERS :(</h3>
-                    <p>Active Users</p>
-                </div>
-                <div class="stb">
-                    <h3 style="color:var(--p)">0</h3>
-                    <p>Detected Bans</p>
-                </div>
-                <div class="stb">
-                    <h3>99.9%</h3>
-                    <p>Uptime</p>
-                </div>
-            </div>
-            <div class="ps">
-                <div class="c3w">
-                    <div class="c3" id="c1">
-                        <div class="ch">
-                            <div class="ct">Britaness <span>LAST BUILD</span></div>
-                            <div class="sta">✓ WORKING</div>
-                        </div>
-                        <div class="cg">
-                            <div class="ss">
-                                <img src="https://i.ibb.co/hJm7SCQ0/photo-5465281760758271854-w.jpg" alt="Britaness Preview">
-                            </div>
-                            <ul class="fl">
-                                <li>
-                                    <h4>EBEY'SHE OBTBODY</h4>
-                                    <p>Matrix-bypass. Разработан для фортнайта, все твои мечты.</p>
-                                </li>
-                                <li>
-                                    <h4>VISUALS — SEX</h4>
-                                    <p>Модные красивые прицелы. Для вас мы сделали такие как надо.</p>
-                                </li>
-                                <li>
-                                    <h4>RAGE & LEGIT</h4>
-                                    <p>Вам нужны эти режимы для получения преимущества.</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <a href="#" class="bb">ACCESS BRITANESS</a>
-                    </div>
-                </div>
-                <div class="c3w">
-                    <div class="c3" id="c2" style="border-color:rgba(0,140,255,.3)">
-                        <div class="ch">
-                            <div class="ct" style="text-shadow:0 0 20px rgba(0,140,255,.5)">Moonware <span>BETA</span></div>
-                            <div class="sta" style="color:#008cff;background:rgba(0,140,255,.1)">✓ TESTING</div>
-                        </div>
-                        <div class="cg">
-                            <div class="ss" style="border-color:#004477">
-                                <img src="https://i.ibb.co/wh3scsrd/photo-54607710658444928565-y.jpg" alt="Moonware Preview">
-                            </div>
-                            <ul class="fl">
-                                <li style="border-left-color:#008cff">
-                                    <h4 style="color:#008cff">MOVEMENT GOD</h4>
-                                    <p>Новые виды перемещения, даже полёт, все в твоих руках как разработчик.</p>
-                                </li>
-                                <li style="border-left-color:#008cff">
-                                    <h4 style="color:#008cff">CLOUD CONFIGS</h4>
-                                    <p>Обновляемые кфг-файлы в один клик для вас.</p>
-                                </li>
-                                <li style="border-left-color:#008cff">
-                                    <h4 style="color:#008cff">OPTIMIZATION</h4>
-                                    <p>Ваш пк скажет вам спасибо, потому что оптимизация.</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <a href="#" class="bb" style="background:#008cff;box-shadow:none" onmouseover="this.style.boxShadow='0 0 30px #008cff'" onmouseout="this.style.boxShadow='none'">ACCESS MOONWARE</a>
-                    </div>
-                </div>
-            </div>
-            <footer>
-                <p>FOR EDUCATIONAL PURPOSES ONLY. © 2026 BRITANESS INC.</p>
-            </footer>
+        
+        <div class="content-grid">
+          <div class="screenshot">
+            <img src="https://i.ibb.co/hJm7SCQ0/photo-5465281760758271854-w.jpg" alt="Britaness">
+          </div>
+          <ul class="features-list">
+            <li>
+              <h4>ЕБЕЙШИЕ ОБХОДЫ</h4>
+              <p>Matrix-bypass. Обходит любые проверки, даже ручные.</p>
+            </li>
+            <li>
+              <h4>ВИЗУАЛЫ — СЕКС</h4>
+              <p>Настрой каждый пиксель. Твоя игра будет выглядеть как кино.</p>
+            </li>
+            <li>
+              <h4>RAGE & LEGIT</h4>
+              <p>От беспалевной игры до полного уничтожения лобби.</p>
+            </li>
+          </ul>
         </div>
-        <script>
-            (function() {
-                const decodeBase64 = (s) => {
-                    try {
-                        return decodeURIComponent(escape(window.atob(s)));
-                    } catch (e) {
-                        return "";
-                    }
-                };
+        <a href="#" class="buy-btn">ACCESS BRITANESS</a>
+      </div>
+    </div>
 
-                window.addEventListener('load', () => {
-                    setTimeout(() => {
-                        document.getElementById('pl').style.opacity = '0';
-                        setTimeout(() => document.getElementById('pl').style.display = 'none', 500);
-                    }, 1500);
-                });
+    <div class="card-3d-wrap">
+      <div class="card-3d" id="card2" style="border-color: rgba(0,140,255,0.3)">
+        <div class="card-header">
+          <div class="card-title" style="text-shadow: 0 0 20px rgba(0,140,255,0.5)">Moonware <span>BETA</span></div>
+          <div class="status" style="color: #008cff; background: rgba(0,140,255,0.1)">● TESTING</div>
+        </div>
+        
+        <div class="content-grid">
+          <div class="screenshot" style="border-color: #004477">
+             <img src="https://i.ibb.co/wh3scsrd/photo-5460771065844928565-y.jpg" alt="Moonware">
+          </div>
+          <ul class="features-list">
+            <li style="border-left-color: #008cff">
+              <h4 style="color: #008cff">MOVEMENT GOD</h4>
+              <p>Идеальные стрейфы, сброс спринта, элитра мотиун всё обходит.</p>
+            </li>
+            <li style="border-left-color: #008cff">
+              <h4 style="color: #008cff">CLOUD CONFIGS</h4>
+              <p>Загружай кфг про-игроков в один клик.</p>
+            </li>
+            <li style="border-left-color: #008cff">
+              <h4 style="color: #008cff">OPTIMIZATION</h4>
+              <p>Жрет очень мало, но функционал большой.</p>
+            </li>
+          </ul>
+        </div>
+        <a href="#" class="buy-btn" style="background: #008cff; box-shadow: none;" onmouseover="this.style.boxShadow='0 0 30px #008cff'" onmouseout="this.style.boxShadow='none'">ACCESS MOONWARE</a>
+      </div>
+    </div>
 
-                // Кастомный курсор
-                const cursorDot = document.querySelector("[dcd]");
-                const cursorOutline = document.querySelector("[dco]");
-                
-                window.addEventListener("mousemove", (e) => {
-                    const x = e.clientX;
-                    const y = e.clientY;
-                    
-                    cursorDot.style.left = `${x}px`;
-                    cursorDot.style.top = `${y}px`;
-                    
-                    cursorOutline.animate({
-                        left: `${x}px`,
-                        top: `${y}px`
-                    }, {
-                        duration: 500,
-                        fill: "forwards"
-                    });
-                });
+  </div>
 
-                const canvas = document.getElementById("bc");
-                const ctx = canvas.getContext("2d");
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-                
-                let particles = [];
-                
-                class Particle {
-                    constructor() {
-                        this.x = Math.random() * canvas.width;
-                        this.y = Math.random() * canvas.height;
-                        this.size = 2 * Math.random();
-                        this.speedX = 1 * Math.random() - 0.5;
-                        this.speedY = 1 * Math.random() - 0.5;
-                    }
-                    
-                    update() {
-                        this.x += this.speedX;
-                        this.y += this.speedY;
-                        
-                        if (this.x > canvas.width || this.x < 0) {
-                            this.speedX = -this.speedX;
-                        }
-                        if (this.y > canvas.height || this.y < 0) {
-                            this.speedY = -this.speedY;
-                        }
-                    }
-                    
-                    draw() {
-                        ctx.fillStyle = "rgba(100, 100, 100, 0.5)";
-                        ctx.beginPath();
-                        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
-                        ctx.fill();
-                    }
-                }
-                
-                function initParticles() {
-                    particles = [];
-                    for (let i = 0; i < 50; i++) {
-                        particles.push(new Particle());
-                    }
-                }
-                
-                function animateParticles() {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    
-                    for (let i = 0; i < particles.length; i++) {
-                        particles[i].update();
-                        particles[i].draw();
-                        
-                        for (let j = i; j < particles.length; j++) {
-                            const dx = particles[i].x - particles[j].x;
-                            const dy = particles[i].y - particles[j].y;
-                            const distance = Math.sqrt(dx * dx + dy * dy);
-                            
-                            if (distance < 150) {
-                                ctx.beginPath();
-                                ctx.strokeStyle = `rgba(100,100,100,${0.1 - distance / 1500})`;
-                                ctx.lineWidth = 1;
-                                ctx.moveTo(particles[i].x, particles[i].y);
-                                ctx.lineTo(particles[j].x, particles[j].y);
-                                ctx.stroke();
-                            }
-                        }
-                    }
-                    
-                    requestAnimationFrame(animateParticles);
-                }
-                
-                initParticles();
-                animateParticles();
-                
-                window.addEventListener("resize", () => {
-                    canvas.width = window.innerWidth;
-                    canvas.height = window.innerHeight;
-                    initParticles();
-                });
+  <footer>
+    <p>FOR EDUCATIONAL PURPOSES ONLY. &copy; 2026 BRITANESS INC.</p>
+  </footer>
 
-                document.querySelectorAll(".c3").forEach((card) => {
-                    card.addEventListener("mousemove", (e) => {
-                        const rect = card.getBoundingClientRect();
-                        const x = e.clientX - rect.left;
-                        const y = e.clientY - rect.top;
-                        const centerX = rect.width / 2;
-                        
-                        const rotateX = (y - rect.height / 2) / (rect.height / 2) * -5;
-                        const rotateY = (x - centerX) / centerX * 5;
-                        
-                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                    });
-                    
-                    card.addEventListener("mouseleave", () => {
-                        card.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
-                    });
-                });
-            })();
-        </script>
-    </body>
+</div>
+
+<script>
+  // PRELOADER
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('preloader').style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('preloader').style.display = 'none';
+      }, 500);
+    }, 1500);
+  });
+
+  // CURSOR
+  const cursorDot = document.querySelector('[data-cursor-dot]');
+  const cursorOutline = document.querySelector('[data-cursor-outline]');
+
+  window.addEventListener('mousemove', function(e) {
+    const posX = e.clientX;
+    const posY = e.clientY;
+
+    cursorDot.style.left = `${posX}px`;
+    cursorDot.style.top = `${posY}px`;
+
+    cursorOutline.animate({
+      left: `${posX}px`,
+      top: `${posY}px`
+    }, { duration: 500, fill: "forwards" });
+  });
+
+  // PARTICLES BACKGROUND
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let particlesArray;
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 2;
+      this.speedX = (Math.random() * 1) - 0.5;
+      this.speedY = (Math.random() * 1) - 0.5;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+      if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+    }
+    draw() {
+      ctx.fillStyle = 'rgba(100, 100, 100, 0.5)';
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particlesArray = [];
+    for (let i = 0; i < 50; i++) {
+      particlesArray.push(new Particle());
+    }
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < particlesArray.length; i++) {
+      particlesArray[i].update();
+      particlesArray[i].draw();
+      
+      for (let j = i; j < particlesArray.length; j++) {
+        const dx = particlesArray[i].x - particlesArray[j].x;
+        const dy = particlesArray[i].y - particlesArray[j].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < 150) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(100, 100, 100, ${0.1 - distance/1500})`;
+          ctx.lineWidth = 1;
+          ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+          ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(animateParticles);
+  }
+
+  initParticles();
+  animateParticles();
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    initParticles();
+  });
+
+  // 3D TILT EFFECT FOR CARDS
+  const cards = document.querySelectorAll('.card-3d');
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = ((y - centerY) / centerY) * -5; // Max rotation deg
+      const rotateY = ((x - centerX) / centerX) * 5;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = `perspective(1000px) rotateX(0) rotateY(0)`;
+    });
+  });
+
+</script>
+
+</body>
 </html>
